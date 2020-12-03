@@ -1,0 +1,28 @@
+CREATE DATABASE pots;
+\c pots
+CREATE TABLE Post (id INT, nombre_de_usuario VARCHAR(25), fecha_de_creacion DATE, contenido VARCHAR(255), descripcion VARCHAR(255));
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion) VALUES (1, 'Pamela', '20-11-2020', 'SQL', 'aprendiendo SQL');
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion) VALUES (2, 'Pamela', '19-11-2020', 'DataBase', 'aprendiendo DataBase');
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion) VALUES (3, 'Carlos', '01-09-2020', 'HTML', 'aprendiendo HTML');
+ALTER TABLE Post ADD titulo VARCHAR(25);
+UPDATE Post SET titulo = 'principio SQL' WHERE id = 1;
+UPDATE Post SET titulo = 'principio DataBase' WHERE id = 2;
+UPDATE Post SET titulo = 'principio HTML' WHERE id = 3;
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES (4, 'Pedro', '23-09-2020', 'CSS', 'aprendiendo CSS', 'principio CSS');
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES (5, 'Pedro', '15-10-2020', 'JS', 'aprendiendo JS', 'principio JavaScript');
+DELETE FROM Post WHERE nombre_de_usuario='Carlos';
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES (6, 'Carlos', '01-11-2020', 'Aplicaciones', 'aprendiendo Aplicaciones', 'principio en aplicaicones');
+ALTER TABLE Post ADD PRIMARY KEY (id);
+CREATE TABLE Comentarios (id INT, fecha DATE, hora_de_creacion VARCHAR(10), contenido VARCHAR(255), FOREIGN KEY (id) REFERENCES Post(id));
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (1, '20-11-2020', '16:38:20', 'muy bueno, lo recomiendo');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (1, '20-11-2020', '17:20:20', 'explica lo basico para empezar');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (6, '21-11-2020', '10:23:25', 'muy complejo');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (6, '22-11-2020', '09:50:01', 'no serviria mucho para novatos');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (6, '21-11-2020', '15:45:11', 'soy informatico, y con eso casi entiendo');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (6, '20-11-2020', '21:18:55', 'deberia explicar mejor');
+INSERT INTO Post (id, nombre_de_usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES (7, 'Margarita', '21-11-2020', 'SQL', 'SQL novatos', 'Empieza desde cero en SQL');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (7, '21-11-2020', '22:18:55', 'es una copia de pamela');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (7, '22-11-2020', '15:01:33', 'prefiero este, entiendo mejor');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (7, '22-11-2020', '18:21:20', 'los dos lo mismo, pero de un punto de vista diferente');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (7, '21-11-2020', '23:59:59', 'es bueno verlo desde otros programas');
+INSERT INTO Comentarios (id, fecha, hora_de_creacion, contenido) VALUES (7, '21-11-2020', '13:00:00', 'soy profesor y utilizo esto para mi clase');
